@@ -2,10 +2,26 @@
   "schemaVersion": 1,
   "id": "customxp",
   "version": "1.0.0",
-  "name": "Custom XP Text",
-  "description": "Mineverze Gaming XP Display",
+  "name": "Player Name XP Bar",
+  "description": "Replaces vanilla XP text with player username.",
+  "authors": [
+    "craftverzegaming-sys"
+  ],
+  "contact": {
+    "sources": "https://github.com/craftverzegaming-sys/custom-xp-mod"
+  },
+  "license": "MIT",
   "environment": "client",
-  "entrypoints": { "main": [ "com.mineverze.customxp.CustomXPMod" ] },
-  "mixins": [ "customxp.mixins.json" ],
-  "depends": { "fabricloader": ">=0.16.0", "minecraft": "~1.21.1", "java": ">=21" }
+  "entrypoints": {
+    "client": [
+      "com.example.customxp.CustomXPMod"
+    ]
+  },
+  "mixins": [
+    "customxp.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "minecraft": "1.21.1"
+  }
 }
