@@ -1,5 +1,6 @@
 package com.mineverze.customxp.mixin;
 
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
@@ -21,16 +22,20 @@ public abstract class InGameHudMixin {
         TextRenderer textRenderer = this.getTextRenderer();
         if (textRenderer == null) return;
 
-        String customName = "Mineverze Gaming";
+        // Dynamically get the current logged-in player's username
+        MinecraftClient client = MinecraftClient.getInstance();
+        if (client.player == null) return;
+        
+        String customName = client.getSession().getUsername();
 
         int windowWidth = context.getScaledWindowWidth();
         int windowHeight = context.getScaledWindowHeight();
 
-        // Calculate positioning over the vanilla XP bar
+        // Calculate positioning over the XP bar
         int x = (windowWidth - textRenderer.getWidth(customName)) / 2;
         int y = windowHeight - 32 - 3;
 
-        // Render black text outline
+        // Black outline rendering
         context.drawText(textRenderer, customName, x + 1, y, 0x000000, false);
         context.drawText(textRenderer, customName, x - 1, y, 0x000000, false);
         context.drawText(textRenderer, customName, x, y + 1, 0x000000, false);
@@ -39,7 +44,7 @@ public abstract class InGameHudMixin {
         // Render main text in XP green (#80FF20)
         context.drawText(textRenderer, customName, x, y, 0x80FF20, false);
 
-        // Cancel default XP number render
+        // Cancel vanilla XP number render
         ci.cancel();
     }
 }
