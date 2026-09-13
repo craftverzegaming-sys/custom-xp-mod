@@ -1,1 +1,11 @@
-
+{
+  "schemaVersion": 1,
+  "id": "customxp",
+  "version": "1.0.0",
+  "name": "Custom XP Text",
+  "description": "Mineverze Gaming XP Display",
+  "environment": "client",
+  "entrypoints": { "main": [ "com.mineverze.customxp.CustomXPMod" ] },
+  "mixins": [ "customxp.mixins.json" ],
+  "depends": { "fabricloader": ">=0.16.0", "minecraft": "~1.21.1", "java": ">=21" }
+}
